@@ -152,19 +152,19 @@ class PythonGmailAPI:
                         sentimentScoreField[ctr]))
 
             #DELETE PRINT STATEMENT ONCE CSV GENERATOR IS WORKING
-            print("\n\nSubject: " + subjectField[ctr])
-            print("From: " + str(fromField[ctr]))
-            print("To: " + str(toField[ctr]))
-            print("filename: " + filenameField[ctr])
-            print("is_body: " + is_bodyField[ctr])
-            print("type: " + typeField[ctr])
-            print("charset: " + charsetField[ctr])
-            print("desc: " + descField[ctr])
-            print("size: " + str(sizeField[ctr]))
-            print("Body: \n" + bodyField[ctr])
-            print("\nSentiment Analysis:")
-            print("type: " + sentimentTypeField[ctr])
-            print("score; " + sentimentScoreField[ctr])
+            # print("\n\nSubject: " + subjectField[ctr])
+            # print("From: " + str(fromField[ctr]))
+            # print("To: " + str(toField[ctr]))
+            # print("filename: " + filenameField[ctr])
+            # print("is_body: " + is_bodyField[ctr])
+            # print("type: " + typeField[ctr])
+            # print("charset: " + charsetField[ctr])
+            # print("desc: " + descField[ctr])
+            # print("size: " + str(sizeField[ctr]))
+            # print("Body: \n" + bodyField[ctr])
+            # print("\nSentiment Analysis:")
+            # print("type: " + sentimentTypeField[ctr])
+            # print("score; " + sentimentScoreField[ctr])
 
             ctr = ctr + 1 #proceed to next email
 
