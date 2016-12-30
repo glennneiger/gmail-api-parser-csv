@@ -86,7 +86,7 @@ class PythonGmailAPI:
             for f in x['payload']['headers']:
                 if f['name'] == 'From':
                     if (len(f['value'].split(" ")) == 1): fromField[ctr][1] = \
-                        f['value'].split(" ")[0].replace("<","").replace(">", "")
+                        f['value'].split(" ")[0].replace("<","").replace(">", "") #if only email (no name)
                     else:
                         fromName = str(f['value']).split(" ")[0].strip() + " " + str(f['value']).split(" ")[1].strip()
                         if (len(str(f['value']).split(" ")) > 2): fromMail = \
@@ -96,10 +96,10 @@ class PythonGmailAPI:
             for t in x['payload']['headers']:
                 if t['name'] == 'To':
                     if (len(t['value'].split(" ")) == 1): toField[ctr][1] = \
-                        t['value'].split(" ")[0].replace("\<", "").replace(">","")
+                        t['value'].split(" ")[0].replace("\<", "").replace(">","") #if only email (no name)
                     else:
-                        toName = str(t['value']).split(" ")[0].strip() + " " + str(t).split(" ")[1].strip()
-                        if (len(str(t).split(" ")) > 2): toMail = str(t).split(" ")[2].replace("\<", "").replace(">","")
+                        toName = str(t['value']).split(" ")[0].strip() + " " + str(t['value']).split(" ")[1].strip()
+                        if (len(str(t['value']).split(" ")) > 2): toMail = str(t['value']).split(" ")[2].replace("<", "").replace(">","")
                         toField[ctr][0] = toName
                         if (toMail): toField[ctr][1] = toMail
 
@@ -136,7 +136,7 @@ class PythonGmailAPI:
             else:
                 print('Error in sentiment analysis call: ', response['statusInfo'])
 
-            w.writerow((subjectField[ctr],
+            w.writerow(("'" + str(subjectField[ctr]) + "'",
                         fromField[ctr][0],
                         fromField[ctr][1],
                         toField[ctr][0],
@@ -147,7 +147,7 @@ class PythonGmailAPI:
                         charsetField[ctr],
                         descField[ctr],
                         sizeField[ctr],
-                        bodyField[ctr],
+                        "'" + bodyField[ctr] + "'",
                         sentimentTypeField[ctr],
                         sentimentScoreField[ctr]))
 
